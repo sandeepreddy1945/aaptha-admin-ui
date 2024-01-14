@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { checkTutorialGuard } from './guards/check-tutorial.guard';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
       import('./pages/tutorial/tutorial.module').then(
         (m) => m.TutorialPageModule
       ),
+    canActivate: [checkTutorialGuard],
   },
   {
     path: 'login',
@@ -35,7 +37,7 @@ const routes: Routes = [
       import('./pages/support/support.module').then((m) => m.SupportPageModule),
   },
   {
-    path: 'tabs',
+    path: 'app',
     loadChildren: () =>
       import('./pages/tabs/tabs.module').then((m) => m.TabsPageModule),
   },
@@ -50,6 +52,16 @@ const routes: Routes = [
     path: 'reports',
     loadChildren: () =>
       import('./pages/reports/reports.module').then((m) => m.ReportsPageModule),
+  },
+  {
+    path: 'logout',
+    loadChildren: () =>
+      import('./pages/logout/logout.module').then((m) => m.LogoutPageModule),
+  },
+  {
+    path: 'account',
+    loadChildren: () =>
+      import('./pages/account/account.module').then((m) => m.AccountPageModule),
   },
 ];
 
