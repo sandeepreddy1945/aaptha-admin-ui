@@ -1,0 +1,7 @@
+{
+  "name": "aaptha-admin-ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

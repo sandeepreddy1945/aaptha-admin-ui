@@ -1,0 +1,27 @@
+<ion-list>
+  @for (personCardDetail of personCardDetails; track personCardDetail) {
+  <ion-item
+    button="true"
+    lines="full"
+    (click)="onPersonCardClick(personCardDetail)"
+  >
+    <ion-thumbnail slot="start" aria-hidden="true" >
+      <img
+        [alt]="personCardDetail.fullName"
+        [src]="getBase64Image(personCardDetail.image)"
+      />
+    </ion-thumbnail>
+    <ion-label
+      >{{ personCardDetail.fullName | titlecase }}
+      <p style="padding-top: 5px">
+        {{ getPersonCategoryType(personCardDetail.categoryType) | titlecase }}
+      </p>
+    </ion-label>
+    <ion-icon
+      style="padding: 10px"
+      [name]="getIconName(personCardDetail.gender)"
+    >
+    </ion-icon>
+  </ion-item>
+  }
+</ion-list>
