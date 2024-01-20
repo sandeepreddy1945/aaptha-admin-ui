@@ -1,4 +1,9 @@
-import { NgModule, isDevMode } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  AfterViewInit,
+  NgModule,
+  isDevMode,
+} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -10,6 +15,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { register } from 'swiper/element/bundle';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,4 +36,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule implements AfterViewInit {
+  ngAfterViewInit(): void {
+    register();
+  }
+}
